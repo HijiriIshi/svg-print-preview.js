@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG Print Preview</title>
+    <script src="./svg-print-preview.js"></script>
+</head>
+<body>
+    <h1>SVG Print Preview</h1>
+    <button id="print-button">Preview</button>
+
+    <script>
+        const sampleSVG1 = `<svg width="1008" height="1344" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" overflow="hidden"><g><rect x="0" y="0" width="1008" height="1344" fill="#FFFFFF"/>
+            <rect x="48.5001" y="112.5" width="522" height="136" stroke="#000000" stroke-width="1.33333" stroke-miterlimit="8" fill="none"/>
+            <text font-family="Yu Gothic,Yu Gothic_MSFontService,sans-serif" font-weight="700" font-size="37" transform="translate(447.359 96)">見積書</text>
+            <text font-family="Yu Gothic,Yu Gothic_MSFontService,sans-serif" font-weight="400" font-size="24" transform="translate(57.6 139)">○○株式会社</text>
+            <text font-family="Yu Gothic,Yu Gothic_MSFontService,sans-serif" font-weight="400" font-size="24" transform="translate(225.6 139)">御中</text>
+            <text font-family="Yu Gothic,Yu Gothic_MSFontService,sans-serif" font-weight="400" font-size="24" transform="translate(57.6 168)">××</text>
+            <text font-family="Yu Gothic,Yu Gothic_MSFontService,sans-serif" font-weight="400" font-size="24" transform="translate(105.6 168)">部</text>
+            <text font-family="Yu Gothic,Yu Gothic_MSFontService,sans-serif" font-weight="400" font-size="24" transform="translate(57.6 197)">△△さま</text>
+            <rect x="240" y="265" width="330" height="48" stroke="#000000" stroke-width="2" stroke-miterlimit="8" fill="none"/>
+            <rect x="48" y="265" width="192" height="48" stroke="#000000" stroke-width="2" stroke-miterlimit="8" fill="#A6A6A6"/>
+            <text font-family="Yu Gothic,Yu Gothic_MSFontService,sans-serif" font-weight="700" font-size="24" transform="translate(81.2234 296)">ご請求金額</text>
+            <rect x="240" y="313" width="330" height="49" stroke="#000000" stroke-width="2" stroke-miterlimit="8" fill="none"/>
+            <rect x="48" y="313" width="192" height="49" stroke="#000000" stroke-width="2" stroke-miterlimit="8" fill="#A6A6A6"/>
+            <text font-family="Yu Gothic,Yu Gothic_MSFontService,sans-serif" font-weight="700" font-size="24" transform="translate(81.2234 345)">お振込期限</text>
+            <path d="M71 487 925.667 487" stroke="#000000" stroke-width="2" stroke-miterlimit="8" fill="none" fill-rule="evenodd"/>
+            <text font-family="Yu Gothic,Yu Gothic_MSFontService,sans-serif" font-weight="700" font-size="16" transform="translate(223.75 477)">品目</text>
+            <text font-family="Yu Gothic,Yu Gothic_MSFontService,sans-serif" font-weight="700" font-size="16" transform="translate(508.344 477)">単価</text>
+            <text font-family="Yu Gothic,Yu Gothic_MSFontService,sans-serif" font-weight="700" font-size="16" transform="translate(633.86 477)">数量</text>
+            <text font-family="Yu Gothic,Yu Gothic_MSFontService,sans-serif" font-weight="700" font-size="16" transform="translate(751.75 477)">金額</text>
+            <path d="M71 533 925.667 533" stroke="#000000" stroke-width="2" stroke-miterlimit="8" fill="none" fill-rule="evenodd"/>
+            <path d="M71 579 925.667 579" stroke="#000000" stroke-width="2" stroke-miterlimit="8" fill="none" fill-rule="evenodd"/>
+            <path d="M71 626 925.667 626" stroke="#000000" stroke-width="2" stroke-miterlimit="8" fill="none" fill-rule="evenodd"/>
+            <path d="M71 811 925.667 811" stroke="#000000" stroke-width="2" stroke-miterlimit="8" fill="none" fill-rule="evenodd"/>
+            <path d="M71 857 925.667 857" stroke="#000000" stroke-width="2" stroke-miterlimit="8" fill="none" fill-rule="evenodd"/>
+            <path d="M71 904 925.667 904" stroke="#000000" stroke-width="2" stroke-miterlimit="8" fill="none" fill-rule="evenodd"/>
+            <path d="M71 950 925.667 950" stroke="#000000" stroke-width="2" stroke-miterlimit="8" fill="none" fill-rule="evenodd"/>
+            <path d="M71 996 925.667 996" stroke="#000000" stroke-width="2" stroke-miterlimit="8" fill="none" fill-rule="evenodd"/>
+            <path d="M777 1043 925.744 1043" stroke="#000000" stroke-width="2" stroke-miterlimit="8" fill="none" fill-rule="evenodd"/>
+            <text font-family="Yu Gothic,Yu Gothic_MSFontService,sans-serif" font-weight="700" font-size="16" transform="translate(709.744 1033)">合計金額</text>
+            <rect x="71.5001" y="1127.5" width="523" height="136" stroke="#000000" stroke-width="1.33333" stroke-miterlimit="8" fill="none"/>
+            <text font-family="Yu Gothic,Yu Gothic_MSFontService,sans-serif" font-weight="700" font-size="16" transform="translate(81.0104 1118)">備考</text>
+            <path d="M71 765 925.667 765" stroke="#000000" stroke-width="2" stroke-miterlimit="8" fill="none" fill-rule="evenodd"/><path d="M71 718 925.667 718" stroke="#000000" stroke-width="2" stroke-miterlimit="8" fill="none" fill-rule="evenodd"/>
+            <path d="M71 672 925.667 672" stroke="#000000" stroke-width="2" stroke-miterlimit="8" fill="none" fill-rule="evenodd"/></g>
+        </svg>`;        
+
+        const sampleSVG2 = `<svg width="1008" height="1344" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" overflow="hidden">
+            <g><rect x="0" y="0" width="1008" height="1344" fill="#FFFFFF"/>
+                <rect x="34" y="26" width="932" height="166" stroke="#000000" stroke-width="2" stroke-miterlimit="8" fill="none"/>
+                <text font-family="Aptos,Aptos_MSFontService,sans-serif" font-weight="700" font-size="64" transform="translate(383.434 129)">SAMPLE</text>
+                <rect x="34" y="1134" width="932" height="166" stroke="#000000" stroke-width="2" stroke-miterlimit="8" fill="none"/>
+                <text font-family="Aptos,Aptos_MSFontService,sans-serif" font-weight="700" font-size="64" transform="translate(403.541 1237)">PAGE2</text>
+            </g></svg>`
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const preview = new SVGPrintPreview({ pageSize: "A4", orientation: "portrait" });
+            document.getElementById("print-button").addEventListener("click", () => {
+                preview.setSVGs([sampleSVG1,sampleSVG2]);
+            });
+        });
+    </script>
+</body>
+</html>
